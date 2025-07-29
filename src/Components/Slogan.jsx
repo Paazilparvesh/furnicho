@@ -18,8 +18,8 @@ function Slogan() {
       </div>
 
       {/* Centered Overlay */}
-      <div className="absolute inset-0 flex items-center justify-center px-4">
-        <div className="bg-[#f4f3ee] text-center rounded-xl px-6 py-4 shadow-md max-w-xl w-full">
+      <div className="absolute inset-0 flex items-center justify-center px-4 scale-90 md:scale:100">
+        <div className="bg-[#f4f3ee] text-center rounded-xl px-6 py-4 shadow-md max-w-xl w-full font-josefin">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#7a5a43]">
             One-stop shop for your
           </h2>
