@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FiPhone } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const CountdownDate = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -11,7 +12,7 @@ const CountdownDate = () => {
   useEffect(() => {
     const countdown = () => {
       const deadline = new Date("2025-08-15T00:00:00").getTime();
-      const now = Date.now(); // still needed to get current time
+      const now = Date.now();
       const diff = deadline - now;
 
       if (diff > 0) {
@@ -40,15 +41,29 @@ const CountdownDate = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center py-10 bg-[#f3f4ef] relative">
-      <p className="text-4xl md:text-5xl lg:text-6xl 2xl:text-6xl font-medium font-josefin text-gray-800 mb-4">
+    <div className="flex flex-col items-center justify-center py-10 bg-[#f3f4ef] relative overflow-hidden">
+      {/* Headline Animation */}
+      <motion.p
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="text-4xl md:text-5xl lg:text-6xl 2xl:text-6xl font-medium font-josefin text-gray-800 mb-4"
+      >
         Live from{" "}
         <span className="bg-gradient-to-b from-[#724935] to-[#D88A64] text-transparent bg-clip-text font-bold font-josefin">
           15 August
         </span>
-      </p>
+      </motion.p>
 
-      <div className="mt-4 w-full scale-85 md:scale-100 md:px-28 xl:px-80 relative font-josefin">
+      {/* Countdown Timer Box Animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="mt-4 w-full scale-85 md:scale-100 md:px-28 xl:px-80 relative font-josefin"
+      >
         {/* Fade overlays */}
         <div className="absolute top-0 left-0 w-full h-4 bg-gradient-to-b from-[#f3f4ef] to-transparent z-10 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-full h-4 bg-gradient-to-t from-[#f3f4ef] to-transparent z-10 pointer-events-none" />
@@ -89,10 +104,16 @@ const CountdownDate = () => {
             </span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Contact Section */}
-      <div className="flex items-center space-x-3 sm:space-x-4 mt-5">
+      {/* Contact Section Animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.6 }}
+        viewport={{ once: true }}
+        className="flex items-center space-x-3 sm:space-x-4 mt-5"
+      >
         <div className="bg-[#874d2c] p-3 sm:p-4 rounded-full shadow-md">
           <FiPhone className="text-white text-lg sm:text-xl" />
         </div>
@@ -103,7 +124,7 @@ const CountdownDate = () => {
         >
           9000130692
         </a>
-      </div>
+      </motion.div>
     </div>
   );
 };
